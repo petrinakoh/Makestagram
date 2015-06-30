@@ -13,6 +13,7 @@ import Parse
 class Post : PFObject, PFSubclassing {
     
     var image: UIImage?
+    var photoUploadTask: UIBackgroundTaskIdentifier?
     
     // 2
     @NSManaged var imageFile: PFFile?
@@ -39,10 +40,19 @@ class Post : PFObject, PFSubclassing {
     }
     
     func uploadPost() {
-        //1
         let imageData = UIImageJPEGRepresentation(image, 0.8)
         let imageFile = PFFile(data: imageData)
-        imageFile.saveInBackgroundWithBlock(nil)
+        
+        // 1
+        photoUploadTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
+            UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
+        }
+        
+        // 2
+        imageFile.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            // 3
+            UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
+        }
         
         // any uploaded post should be associated with the current user
         user = PFUser.currentUser()
