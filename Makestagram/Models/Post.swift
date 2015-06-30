@@ -42,10 +42,10 @@ class Post : PFObject, PFSubclassing {
         //1
         let imageData = UIImageJPEGRepresentation(image, 0.8)
         let imageFile = PFFile(data: imageData)
-        imageFile.save()
+        imageFile.saveInBackgroundWithBlock(nil)
         // 2
         self.imageFile = imageFile
-        save()
+        saveInBackgroundWithBlock(nil)
     }
     
 }
