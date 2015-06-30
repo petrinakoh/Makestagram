@@ -12,7 +12,9 @@ import Parse
 class TimelineViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
     var photoTakingHelper: PhotoTakingHelper?
+    var posts: [Post] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,4 +81,21 @@ extension TimelineViewController: UITabBarControllerDelegate {
         }
     }
     
+}
+
+extension TimelineViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // 1 our Table View needs to have as many rows as we have posts stored in the posts property
+        return posts.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // 2 for now, we return a simple placeholder cell with the title "Post"
+        let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! UITableViewCell
+        
+        cell.textLabel!.text = "Post"
+        
+        return cell
+    }
 }
