@@ -52,6 +52,15 @@ class TimelineViewController: UIViewController {
             // 8 we receive all posts that meet our requirement
             // The Parse framework hands us an array of type [AnyObject]? but we want to store the posts in an array of type [Post]
             self.posts = result as? [Post] ?? []
+            
+            // 1 loop over all posts returned from the timeline query
+            for post in self.posts {
+                // 2 calling getData() to download the actual image file
+                let data = post.imageFile?.getData()
+                // 3 once we have retrieved and stored the data, we turn it into a UIImage instance and store that in the image property of the post
+                post.image = UIImage(data: data!, scale:1.0)
+            }
+            
             // 9 once we have stored the new posts, we refresh tableView
             self.tableView.reloadData()
         }
@@ -91,10 +100,12 @@ extension TimelineViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // 2 for now, we return a simple placeholder cell with the title "Post"
-        let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! UITableViewCell
+        // 1 add cast to PostTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
         
-        cell.textLabel!.text = "Post"
+        // 2 using the postImageView property of our custom cell we can now decide which image should be displayed in the cell
+        // we grab the image property of the post
+        cell.postImageView.image = posts[indexPath.row].image
         
         return cell
     }
