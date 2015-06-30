@@ -11,6 +11,7 @@ import Parse
 
 class TimelineViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
     var photoTakingHelper: PhotoTakingHelper?
 
     override func viewDidLoad() {
