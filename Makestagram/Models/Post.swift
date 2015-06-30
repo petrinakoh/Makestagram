@@ -43,7 +43,9 @@ class Post : PFObject, PFSubclassing {
         let imageData = UIImageJPEGRepresentation(image, 0.8)
         let imageFile = PFFile(data: imageData)
         imageFile.saveInBackgroundWithBlock(nil)
-        // 2
+        
+        // any uploaded post should be associated with the current user
+        user = PFUser.currentUser()
         self.imageFile = imageFile
         saveInBackgroundWithBlock(nil)
     }
