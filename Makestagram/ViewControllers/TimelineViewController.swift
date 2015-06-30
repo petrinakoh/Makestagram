@@ -21,7 +21,7 @@ class TimelineViewController: UIViewController {
     func takePhoto() {
         // instantiate photo taking class, provide callback for when photo is selected
         photoTakingHelper = PhotoTakingHelper(viewController: self.tabBarController!) { (image: UIImage?) in
-            // dont do anything yet..
+            println("received a callback")
         }
     }
 
