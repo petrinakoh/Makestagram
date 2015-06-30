@@ -48,6 +48,7 @@
 		6F0237D61B42210E0023D8A6 /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0237D51B42210E0023D8A6 /* FriendSearchViewController.swift */; };
 		6F0237D91B42F7560023D8A6 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0237D81B42F7560023D8A6 /* PhotoTakingHelper.swift */; };
 		6F0237DC1B4312F10023D8A6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0237DB1B4312F10023D8A6 /* Post.swift */; };
+		6FC36F881B4346910055A020 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC36F871B4346910055A020 /* PostTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,7 @@
 		6F0237D51B42210E0023D8A6 /* FriendSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSearchViewController.swift; sourceTree = "<group>"; };
 		6F0237D81B42F7560023D8A6 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		6F0237DB1B4312F10023D8A6 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		6FC36F871B4346910055A020 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +345,7 @@
 		62C8C1E21B06BD6500DC3EA7 /* Makestagram */ = {
 			isa = PBXGroup;
 			children = (
+				6FC36F851B4346740055A020 /* Views */,
 				6F0237DA1B4312D50023D8A6 /* Models */,
 				6F0237D71B42F6250023D8A6 /* PhotoTaking */,
 				6277189C1B0A58E800AF5C6E /* Helpers */,
@@ -396,6 +399,22 @@
 				6F0237DB1B4312F10023D8A6 /* Post.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6FC36F851B4346740055A020 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6FC36F861B4346740055A020 /* Timeline */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6FC36F861B4346740055A020 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				6FC36F871B4346910055A020 /* PostTableViewCell.swift */,
+			);
+			path = Timeline;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -587,6 +606,7 @@
 				6F0237D41B4220F40023D8A6 /* PhotoViewController.swift in Sources */,
 				62C8C1E61B06BD6500DC3EA7 /* AppDelegate.swift in Sources */,
 				627718971B0A581700AF5C6E /* FilterViewController.swift in Sources */,
+				6FC36F881B4346910055A020 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
