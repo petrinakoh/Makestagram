@@ -7,10 +7,24 @@
 //
 
 import UIKit
+import Bond
 
 class PostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var postImageView: UIImageView!
+    
+    var post: Post? {
+        didSet {
+            // 1 whenever a new value is assigned to the post property, we use optional binding to check whether the new value is nil
+            if let post = post {
+                // 2 if the value is not nil
+                // bind the image of the post to the 'postImage' view
+                // whenever post.image updates, the displayed image of postImageView will update
+                post.image ->> postImageView
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
