@@ -69,14 +69,14 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0MD-vC-7Z4" id="2zZ-b7-wsg">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5nt-tI-XYp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="319.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5nt-tI-XYp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="344"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="344" id="qFA-WR-RhD"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PG-nq-aBD">
-                                                    <rect key="frame" x="544" y="401.5" width="44" height="44"/>
+                                                    <rect key="frame" x="544" y="401" width="44" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="44" id="O1b-In-9JZ"/>
                                                         <constraint firstAttribute="height" constant="44" id="Oyw-CV-IaF"/>
@@ -87,12 +87,24 @@
                                                     </state>
                                                     <state key="selected" image="Heart-selected"/>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-0z-2ML">
+                                                    <rect key="frame" x="8" y="407.5" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="PYt-lb-LQC"/>
+                                                        <constraint firstAttribute="height" constant="44" id="Pbc-MH-RlA"/>
+                                                    </constraints>
+                                                    <state key="normal" image="More">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="5nt-tI-XYp" secondAttribute="trailing" id="B2x-Oe-iEx"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="4PG-nq-aBD" secondAttribute="trailing" constant="4" id="LEX-sn-Y2Y"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="4PG-nq-aBD" secondAttribute="bottom" constant="16" id="aQk-Fn-Wfe"/>
+                                                <constraint firstItem="jAb-0z-2ML" firstAttribute="leading" secondItem="2zZ-b7-wsg" secondAttribute="leadingMargin" id="diY-f3-0Lw"/>
                                                 <constraint firstItem="5nt-tI-XYp" firstAttribute="top" secondItem="2zZ-b7-wsg" secondAttribute="top" id="sSp-ub-M7T"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jAb-0z-2ML" secondAttribute="bottom" constant="10" id="x1Z-dV-6Dd"/>
                                                 <constraint firstItem="5nt-tI-XYp" firstAttribute="leading" secondItem="2zZ-b7-wsg" secondAttribute="leading" id="xod-J4-rQu"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -151,6 +163,7 @@
         <image name="Heart" width="72" height="68"/>
         <image name="Heart-selected" width="72" height="68"/>
         <image name="Home" width="38" height="36"/>
+        <image name="More" width="26" height="17"/>
         <image name="People" width="42" height="42"/>
     </resources>
 </document>
