@@ -75,6 +75,8 @@ extension TimelineViewController: UITableViewDataSource {
         let post = posts[indexPath.row]
         // directly before a post will be displayed, we trigger the image download
         post.downloadImage()
+        // get likes for the post
+        post.fetchLikes()
         // assign the post that shall be displayed to the post property
         cell.post = post
         
