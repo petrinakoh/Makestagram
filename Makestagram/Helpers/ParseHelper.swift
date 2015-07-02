@@ -37,7 +37,7 @@ class ParseHelper {
     
     // 2 static method - can call it without having to create an instance of ParseHelper
     // by taking the callback as a parameter, we can call any Parse method and return the result of the method to that completionBlock
-    static func timelineRequestforCurrentUser(completionBlock: PFArrayResultBlock) {
+    static func timelineRequestforCurrentUser(range: Range<Int>, completionBlock: PFArrayResultBlock) {
         let followingQuery = PFQuery(className: ParseFollowClass)
         followingQuery.whereKey(ParseFollowFromUser, equalTo: PFUser.currentUser()!)
         
@@ -50,6 +50,10 @@ class ParseHelper {
         let query = PFQuery.orQueryWithSubqueries([postsFromFollowedUsers!, postsFromThisUser!])
         query.includeKey(ParsePostUser)
         query.orderByDescending(ParsePostCreatedAt)
+        
+        // skip and limit number of posts we download
+        query.skip = range.startIndex
+        query.limit = range.endIndex - range.startIndex
         
         // 3 whoever calls the timelineRequestforCurrentUser method will be able to handle the result returned from the query
         query.findObjectsInBackgroundWithBlock(completionBlock)
