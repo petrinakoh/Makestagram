@@ -23,7 +23,7 @@ class ParseHelper {
     static let ParseLikeFromUser = "fromUser"
     
     // Post Relation
-    static let ParsePostUser = "User"
+    static let ParsePostUser = "user"
     static let ParsePostCreatedAt = "createdAt"
     
     // Flagged Content Relation
@@ -33,6 +33,7 @@ class ParseHelper {
     
     // User Relation
     static let ParseUserUsername = "username"
+    
     
     // 2 static method - can call it without having to create an instance of ParseHelper
     // by taking the callback as a parameter, we can call any Parse method and return the result of the method to that completionBlock

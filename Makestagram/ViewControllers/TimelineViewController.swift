@@ -69,7 +69,7 @@ extension TimelineViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // 1 add cast to PostTableViewCell
+        // add case to PostTableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
         
         let post = posts[indexPath.row]
@@ -82,4 +82,5 @@ extension TimelineViewController: UITableViewDataSource {
         
         return cell
     }
+    
 }

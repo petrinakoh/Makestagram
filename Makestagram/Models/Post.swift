@@ -93,7 +93,7 @@ class Post : PFObject, PFSubclassing {
             // map replaces objects, in this case replace likes in array with the users associated with the like
             // assign the result to our likes.value property
             self.likes.value = likes?.map { like in
-                let like = like as! PFObjectlet
+                let like = like as! PFObject
                 let fromUser = like[ParseHelper.ParseLikeFromUser] as! PFUser
                 
                 return fromUser

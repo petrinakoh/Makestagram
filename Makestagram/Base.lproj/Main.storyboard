@@ -110,8 +110,8 @@
                                                         <constraint firstAttribute="height" constant="20" id="6hG-KH-QU9"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv4-Ck-N9R">
-                                                    <rect key="frame" x="60" y="367" width="482" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv4-Ck-N9R">
+                                                    <rect key="frame" x="60" y="366" width="482" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="DBD-NH-TaV"/>
                                                     </constraints>
