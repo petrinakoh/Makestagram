@@ -53,4 +53,48 @@ class ParseHelper {
         // 3 whoever calls the timelineRequestforCurrentUser method will be able to handle the result returned from the query
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
+    
+    // MARK: Likes
+    
+    static func likePost(user: PFUser, post: Post) {
+        let likeObject = PFObject(className: ParseLikeClass)
+        likeObject[ParseLikeFromUser] = user
+        likeObject[ParseLikeToPost] = post
+        
+        likeObject.saveInBackgroundWithBlock(nil)
+    }
+    
+    static func unlikePost(user: PFUser, post: Post) {
+        // 1
+        let query = PFQuery(className: ParseLikeClass)
+        query.whereKey(ParseLikeFromUser, equalTo: user)
+        query.whereKey(ParseLikeToPost, equalTo: post)
+        
+        query.findObjectsInBackgroundWithBlock {
+            (results: [AnyObject]?, error: NSError?) -> Void in
+            // 2
+            if let error = error {
+                ErrorHandling.defaultErrorHandler(error)
+            }
+            
+            if let results = results as? [PFObject] {
+                for likes in results {
+                    likes.deleteInBackgroundWithBlock(nil)
+                }
+            }
+        }
+    }
+    
+    static func likesForPost(post: Post, completionBlock: PFArrayResultBlock) {
+        let likesQuery = PFQuery(className: ParseLikeClass)
+        likesQuery.whereKey(ParseLikeToPost, equalTo: post)
+        
+        likesQuery.includeKey(ParseLikeFromUser)
+        likesQuery.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    
 }
+
+
+
