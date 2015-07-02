@@ -97,5 +97,12 @@ class ParseHelper {
     
 }
 
+// implement equatable protocol to consider any two Parse objects equal if they have the same objectId
+extension PFObject : Equatable {
+    
+}
 
+public func ==(lhs: PFObject, rhs: PFObject) -> Bool {
+    return lhs.objectId == rhs.objectId
+}
 
