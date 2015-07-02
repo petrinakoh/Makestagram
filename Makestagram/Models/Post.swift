@@ -16,6 +16,8 @@ class Post : PFObject, PFSubclassing {
     var image: Dynamic<UIImage?> = Dynamic(nil)
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
+    var likes = Dynamic<[PFUser]?>(nil)
+    
     // 2
     @NSManaged var imageFile: PFFile?
     @NSManaged var user: PFUser?
@@ -74,6 +76,48 @@ class Post : PFObject, PFSubclassing {
                     self.image.value = image
                 }
             }
+        }
+    }
+    
+    func fetchLikes() {
+        // check whether likes.value already has a value or is nil
+        if (likes.value != nil) {
+            return
+        }
+        
+        // fetch likes for current Post using method in ParseHelper
+        ParseHelper.likesForPost(self, completionBlock: { (var likes: [AnyObject]?, error: NSError?) -> Void in
+            // filter removes all likes that belong to users that no longer exist in app
+            likes = likes?.filter { like in like[ParseHelper.ParseLikeFromUser] != nil }
+            
+            // map replaces objects, in this case replace likes in array with the users associated with the like
+            // assign the result to our likes.value property
+            self.likes.value = likes?.map { like in
+                let like = like as! PFObjectlet
+                let fromUser = like[ParseHelper.ParseLikeFromUser] as! PFUser
+                
+                return fromUser
+            }
+        })
+    }
+    
+    func doesUserLikePost(user: PFUser) -> Bool {
+        if let likes = likes.value {
+            return contains(likes, user)
+        } else {
+            return false
+        }
+    }
+    
+    func toggleLikePost(user: PFUser) {
+        if (doesUserLikePost(user)) {
+            // if image is liked, unlike it now
+            likes.value = likes.value?.filter { $0 != user }
+            ParseHelper.unlikePost(user, post: self)
+        } else {
+            // if image is not liked yet, like it now
+            likes.value?.append(user)
+            ParseHelper.likePost(user, post: self)
         }
     }
     
