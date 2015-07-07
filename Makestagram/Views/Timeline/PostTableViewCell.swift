@@ -42,6 +42,7 @@ class PostTableViewCell: UITableViewCell {
         }
     }
     
+
     var likeBond: Bond<[PFUser]?>!
     
     required init(coder aDecoder: NSCoder) {
@@ -49,6 +50,7 @@ class PostTableViewCell: UITableViewCell {
         
         // 1 create a new bond that takes a trailing closure when it is initialized
         likeBond = Bond<[PFUser]?>() { [unowned self] likeList in
+            
             // 2 check if we have received a value for likeList or if we received nil
             if let likeList = likeList {
                 // 3 update likesLabel to display list of usernames of users that liked post

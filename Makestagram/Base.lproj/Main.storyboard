@@ -37,11 +37,89 @@
                     <view key="view" contentMode="scaleToFill" id="XWn-jR-arg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="4ri-AU-tRM">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="WMR-4X-1GA"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="rtI-Il-WMK" id="tyI-NY-0ma"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kDU-v8-n54">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="50" id="A8w-lP-XRG" customClass="FriendSearchTableViewCell" customModule="Makestagram" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A8w-lP-XRG" id="7Jz-Gr-PKp">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZ4-9J-boJ">
+                                                    <rect key="frame" x="20" y="14" width="472" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="MJx-TX-4oj"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoA-gj-xto">
+                                                    <rect key="frame" x="540" y="3" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="8c3-5A-pax"/>
+                                                        <constraint firstAttribute="height" constant="44" id="bET-CR-Zbf"/>
+                                                    </constraints>
+                                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                    <state key="normal" image="Add">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="selected" image="Check"/>
+                                                    <connections>
+                                                        <action selector="followButtonTapped:" destination="A8w-lP-XRG" eventType="touchUpInside" id="3tu-ua-it9"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="IoA-gj-xto" secondAttribute="centerY" id="No3-9E-NvI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="IoA-gj-xto" secondAttribute="trailing" constant="8" id="V2P-Uo-Syj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="AZ4-9J-boJ" secondAttribute="trailing" constant="100" id="XPx-Jc-vkH"/>
+                                                <constraint firstAttribute="centerY" secondItem="AZ4-9J-boJ" secondAttribute="centerY" id="rCS-LX-XFR"/>
+                                                <constraint firstItem="AZ4-9J-boJ" firstAttribute="leading" secondItem="7Jz-Gr-PKp" secondAttribute="leadingMargin" constant="12" id="uGZ-Dv-x97"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="followButton" destination="IoA-gj-xto" id="OoE-2n-3tC"/>
+                                            <outlet property="usernameLabel" destination="AZ4-9J-boJ" id="Tvj-zy-vu0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="rtI-Il-WMK" id="vfg-CE-Byo"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kDU-v8-n54" firstAttribute="leading" secondItem="XWn-jR-arg" secondAttribute="leading" id="0Sh-N4-AQs"/>
+                            <constraint firstAttribute="trailing" secondItem="4ri-AU-tRM" secondAttribute="trailing" id="17E-Dw-3j7"/>
+                            <constraint firstItem="4ri-AU-tRM" firstAttribute="top" secondItem="BHl-sL-Dgr" secondAttribute="bottom" id="BQi-NB-vwa"/>
+                            <constraint firstItem="YIV-zu-RMZ" firstAttribute="top" secondItem="kDU-v8-n54" secondAttribute="bottom" id="clw-Mg-4sT"/>
+                            <constraint firstItem="kDU-v8-n54" firstAttribute="top" secondItem="4ri-AU-tRM" secondAttribute="bottom" id="iWa-pr-amk"/>
+                            <constraint firstItem="4ri-AU-tRM" firstAttribute="leading" secondItem="XWn-jR-arg" secondAttribute="leading" id="tKY-vy-IsT"/>
+                            <constraint firstAttribute="trailing" secondItem="kDU-v8-n54" secondAttribute="trailing" id="xxl-9p-8d1"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="People" id="oK4-6w-oqF">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="searchBar" destination="4ri-AU-tRM" id="YUn-4F-He9"/>
+                        <outlet property="tableView" destination="kDU-v8-n54" id="Cv2-2k-Uh6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5l-jf-2p0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -191,7 +269,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add" width="42" height="42"/>
         <image name="Camera" width="40" height="30"/>
+        <image name="Check" width="42" height="42"/>
         <image name="Heart" width="72" height="68"/>
         <image name="Heart-selected" width="72" height="68"/>
         <image name="Home" width="38" height="36"/>
