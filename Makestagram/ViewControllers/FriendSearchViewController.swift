@@ -52,9 +52,10 @@ class FriendSearchViewController: UIViewController {
             switch (state) {
             case .DefaultMode:
                 query = ParseHelper.allUsers(updateList)
+            case .SearchMode:
+                println("")
             }
             
-            case .SearchMode:
             let searchText = searchBar?.text ?? ""
             query = ParseHelper.searchUsers(searchText, completionBlock:updateList)
         }
