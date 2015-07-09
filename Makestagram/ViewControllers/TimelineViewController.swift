@@ -75,16 +75,20 @@ extension TimelineViewController: UITabBarControllerDelegate {
 
 extension TimelineViewController: UITableViewDataSource {
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // our Table View needs to have as many sections as we have posts stored in the posts property
+        return self.timelineComponent.content.count
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 1 our Table View needs to have as many rows as we have posts stored in the posts property
-        return timelineComponent.content.count
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // add case to PostTableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
         
-        let post = timelineComponent.content[indexPath.row]
+        let post = timelineComponent.content[indexPath.section]
         // directly before a post will be displayed, we trigger the image download
         post.downloadImage()
         // get likes for the post
@@ -99,6 +103,18 @@ extension TimelineViewController: UITableViewDataSource {
 
 extension TimelineViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        timelineComponent.targetWillDisplayEntry(indexPath.row)
+        timelineComponent.targetWillDisplayEntry(indexPath.section)
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCellWithIdentifier("PostHeader") as! PostSectionHeaderView
+        let post = self.timelineComponent.content[section]
+        headerCell.post = post
+        
+        return headerCell
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
 }

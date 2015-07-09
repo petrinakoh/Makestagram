@@ -51,6 +51,7 @@
 		6F9847071B4ADF4700095518 /* FriendSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9847061B4ADF4700095518 /* FriendSearchTableViewCell.swift */; };
 		6FC36F881B4346910055A020 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC36F871B4346910055A020 /* PostTableViewCell.swift */; };
 		6FC36F8A1B4358340055A020 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC36F891B4358340055A020 /* ParseHelper.swift */; };
+		6FE404541B4E3EBC001D9FEA /* PostSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE404531B4E3EBC001D9FEA /* PostSectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +198,7 @@
 		6F9847061B4ADF4700095518 /* FriendSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSearchTableViewCell.swift; sourceTree = "<group>"; };
 		6FC36F871B4346910055A020 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		6FC36F891B4358340055A020 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
+		6FE404531B4E3EBC001D9FEA /* PostSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -427,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				6FC36F871B4346910055A020 /* PostTableViewCell.swift */,
+				6FE404531B4E3EBC001D9FEA /* PostSectionHeaderView.swift */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				6F0237D41B4220F40023D8A6 /* PhotoViewController.swift in Sources */,
 				6F9847071B4ADF4700095518 /* FriendSearchTableViewCell.swift in Sources */,
 				62C8C1E61B06BD6500DC3EA7 /* AppDelegate.swift in Sources */,
+				6FE404541B4E3EBC001D9FEA /* PostSectionHeaderView.swift in Sources */,
 				627718971B0A581700AF5C6E /* FilterViewController.swift in Sources */,
 				6FC36F8A1B4358340055A020 /* ParseHelper.swift in Sources */,
 				6FC36F881B4346910055A020 /* PostTableViewCell.swift in Sources */,
