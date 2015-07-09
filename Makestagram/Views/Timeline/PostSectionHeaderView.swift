@@ -17,6 +17,9 @@ class PostSectionHeaderView: UITableViewCell {
         didSet {
             if let post = post {
                 usernameLabel.text = post.user?.username
+                
+                // add timestamp that shows how long ago post was created
+                postTimeLabel.text = post.createdAt?.shortTimeAgoSinceDate(NSDate()) ?? ""
             }
         }
     }
