@@ -18,8 +18,7 @@ class Post : PFObject, PFSubclassing {
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
     var likes = Dynamic<[PFUser]?>(nil)
-    
-    static var imageCache: NSCacheSwift<String, UIImage!>
+    static var imageCache: NSCacheSwift<String, UIImage>!
     
     // 2
     @NSManaged var imageFile: PFFile?
