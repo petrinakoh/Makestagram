@@ -29,11 +29,20 @@ class PostTableViewCell: UITableViewCell {
     
     var post: Post? {
         didSet {
-            // 1 whenever a new value is assigned to the post property, we use optional binding to check whether the new value is nil
+            // free memory of image stored with post that is no longer displayed
+            if let oldValue = oldValue where oldValue != post {
+                // unsubscribes from future updates of the old post
+                likeBond.unbindAll()
+                postImageView.designatedBond.unbindAll()
+                // check if image of old post has any bindings left
+                // if no one is binding to the image, free up memory by setting image.value to nil
+                if (oldValue.image.bonds.count == 0) {
+                    oldValue.image.value = nil
+                }
+            }
+            // whenever a new value is assigned to the post property, we use optional binding to check whether the new value is nil
             if let post = post {
-                // 2 if the value is not nil
                 // bind the image of the post to the 'postImage' view
-                // whenever post.image updates, the displayed image of postImageView will update
                 post.image ->> postImageView
                 
                 // bind the likeBond to update like label and button when likes change

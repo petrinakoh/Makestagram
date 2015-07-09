@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 import Bond
+import ConvenienceKit
 
 // 1
 class Post : PFObject, PFSubclassing {
@@ -17,6 +18,8 @@ class Post : PFObject, PFSubclassing {
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
     var likes = Dynamic<[PFUser]?>(nil)
+    
+    static var imageCache: NSCacheSwift<String, UIImage!>
     
     // 2
     @NSManaged var imageFile: PFFile?
@@ -39,6 +42,8 @@ class Post : PFObject, PFSubclassing {
         dispatch_once(&onceToken) {
             // inform Parse about this subclass
             self.registerSubclass()
+            // create an empty cache
+            Post.imageCache = NSCacheSwift<String, UIImage>()
         }
     }
     
@@ -64,8 +69,12 @@ class Post : PFObject, PFSubclassing {
     }
     
     func downloadImage() {
+        // attempt to assign a value to image.value directly from cache
+        // if this assignment is successful, the entire download block will be skipped
+        image.value = Post.imageCache[self.imageFile!.name]
+        
         // if image is not downloaded yet, get it
-        // 1 only start download if image.value is nil
+        // only start download if image.value is nil
         if (image.value == nil) {
             // 2 start the download in background thread
             imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
@@ -74,6 +83,8 @@ class Post : PFObject, PFSubclassing {
                     // 3 when download completes, update the post.image
                     // use .value because image is a Dynamic
                     self.image.value = image
+                    // when image is downloaded, add it to cache
+                    Post.imageCache[self.imageFile!.name] = image
                 }
             }
         }
